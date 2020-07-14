@@ -1,4 +1,6 @@
 
 class LabPricingGate:
-    pass
     
+    def getPrice(self, detail, api_key):
+        # TODO
+        pass

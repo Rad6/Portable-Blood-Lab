@@ -1,5 +1,5 @@
 
-class date:
+class Date:
     def __init__(self, year, month, day, hour):
         self.__year = year
         self.__month = month
