@@ -1,22 +1,21 @@
 
 class Order:
-    def __init__(self, presc_detail, status, is_canceled, tracking_code, labs_tracking_code, fault_code, 
-                price, address, lab, blood_expert, payment_detail, user, service_time, test_list):
+    def __init__(self):
 
-        self.__presc_detail = presc_detail
-        self.__status = status
-        self.__is_canceled = is_canceled
-        self.__tracking_code = tracking_code
-        self.__labs_tracking_code = labs_tracking_code
-        self.__fault_code = fault_code
-        self.__price = price
-        self.__address = address
-        self.__lab = lab
-        self.__blood_expert = blood_expert
-        self.__payment_detail = payment_detail
-        self.__user = user
-        self.__service_time = service_time
-        self.__test_list = test_list
+        self.__presc_detail = None
+        self.__status = None
+        self.__is_canceled = None
+        self.__tracking_code = None
+        self.__labs_tracking_code = None
+        self.__fault_code = None
+        self.__price = None
+        self.__address = None
+        self.__lab = None
+        self.__blood_expert = None
+        self.__payment_detail = None
+        self.__user = None
+        self.__service_time = None
+        self.__test_list = None
 
     
     def getPrescDetail(self):
