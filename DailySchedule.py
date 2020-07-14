@@ -1,0 +1,4 @@
+
+class DailySchedule:
+    pass
+    

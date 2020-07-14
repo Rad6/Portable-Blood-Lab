@@ -1,0 +1,4 @@
+
+class PrescriptionDetail:
+    pass
+    

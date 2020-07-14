@@ -1,0 +1,4 @@
+
+class PaymentDetail:
+    pass
+    

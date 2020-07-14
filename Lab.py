@@ -1,0 +1,4 @@
+
+class Lab:
+    pass
+    
