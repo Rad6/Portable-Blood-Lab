@@ -15,3 +15,7 @@ class Test:
 
     def setMustIncludePresc(self, must):
         self.__mustIncluidePresc = must    
+
+
+    def __str__(self):
+        return f"Test: name : {self.__name}, mustPresc : {self.__mustIncluidePresc}"
