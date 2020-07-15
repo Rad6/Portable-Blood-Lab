@@ -1,8 +1,10 @@
-from Order import Order
+# from Lab import Lab
+# from ServiceTime import ServiceTime
+from filler import generateSampleOrder
 
 class Handler:
     def __init__(self):
-        self.__order = None
+        self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
 
     def enterPrescriptionID(self, pid):
         pass
@@ -17,10 +19,14 @@ class Handler:
         pass
 
     def getTimes(self):
-        return None
+        lab = self.__order.getLab()
+        totaltimes = lab.getAvailableTimes()
+        return totaltimes
 
     def chooseTime(self, service_time):
-        pass
+        service_time.setAccessibility(False)
+        self.__order.setServiceTime(service_time)
+        print(f"the chosen time is: {str(self.__order.getServiceTime())}")
     
     def getLabs(self):
         pass
