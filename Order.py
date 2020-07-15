@@ -27,11 +27,14 @@ class Order:
     def getLab(self):
         return self.__lab
 
-    def setLan(self, value):
+    def setLab(self, value):
         self.__lab = value
 
     def setServiceTime(self, value):
         self.__service_time = value
+
+    def getServiceTime(self):
+        return self.__service_time
 
     def chooseTests(self, tests = []):
         # TODO
