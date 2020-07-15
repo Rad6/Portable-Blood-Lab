@@ -3,12 +3,12 @@ from ServiceTime import ServiceTime
 
 
 class DailySchedule:
-    def __init__(self, date, service_time = []):
+    def __init__(self, date, service_times = []):
         self.__date = date
-        self.__service_time = service_time
+        self.__service_times = service_times
 
     def getServiceTimes(self):
-        return self.__service_time
+        return self.__service_times
 
     def getServiceTime(self, date):
         # TODO
