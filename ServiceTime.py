@@ -8,7 +8,7 @@ class DateType(Enum):
     
 
 class ServiceTime:
-    def __init__(self, date, accessibility, type):
+    def __init__(self, date, accessibility=True, type=DateType.ordinary):
         self.__date = date
         self.__accessibility = accessibility
         self.__type = type
@@ -30,3 +30,6 @@ class ServiceTime:
 
     def setType(self, value):
         self.__type = value
+    
+    def __str__(self):
+        return f"ServiceTime:(at {str(self.__date)}, acc:{self.__accessibility}, type={self.__type})"
