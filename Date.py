@@ -1,6 +1,7 @@
+from datetime import datetime
 
 class Date:
-    def __init__(self, year, month, day, hour):
+    def __init__(self, year=0, month=0, day=0, hour=0):
         self.__year = year
         self.__month = month
         self.__day = day
@@ -26,3 +27,24 @@ class Date:
     def setHour(self, value):
         self.__hour = value
     
+    def setFromDateTime(self, dt):
+        self.setYear(dt.year)
+        self.setMonth(dt.month)
+        self.setDay(dt.day)
+        self.setHour(dt.hour)
+
+    def __gt__(self, other):
+        if self.getYear() > other.getYear():
+            return True
+        if self.getMonth() > other.getMonth() and self.getYear() == other.getYear():
+            return True
+        if self.getDay() > other.getDay() and\
+             self.getYear() == other.getYear() and self.getMonth() == other.getMonth():
+            return True
+        # if self.getHour() > other.getHour():
+        #     return True
+        return False
+
+
+    def __str__(self):
+        return f"Date({self.__year}.{self.__month}.{self.__day} at {self.__hour})"
