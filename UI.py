@@ -34,8 +34,15 @@ class UI:
         totalprice = self.__handler.getPrice()
         print(f"the total price is : {totalprice}")
         # TODO: Show menu based on the price {cancel or stuff or back}
+    def enterPrescriptionID(self):
+        print("Enter your Priscription ID: ", end="")
+        pid = int(input())
+        self.__handler.enterPrescriptionID(pid)
+        print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
+
 
 if __name__ == "__main__":
     ui = UI()
     # ui.chooseTime()
     ui.getPrice()
+    ui.enterPrescriptionID()
