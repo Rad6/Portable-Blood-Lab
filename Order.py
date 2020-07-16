@@ -57,12 +57,14 @@ class Order:
     def setPrice(self, value):
         self.__price = value
 
+    def setTestList(self, testlist):
+        self.__test_list = testlist
+
     def getTestList(self):
         return self.__test_list
 
     def calcTotalPrice(self, price):
-        # TODO
-        pass
+        return price + 4000
 
     def doPayment(self):
         # TODO
@@ -72,4 +74,17 @@ class Order:
         self.__blood_expert = value
 
     def doPricing(self):
-        pass
+        tl = self.getTestList()
+        tests = tl.getTests()
+        pd = self.getPrescDetail()
+        if pd.getIsCovered():
+            pid = pd.getPrescID()
+        lab = self.getLab()
+        detail = {
+            'pid' : pid,
+            'tl'  : tests
+        }
+        price = lab.calcPrice(detail)
+        totalprice = self.calcTotalPrice(price)
+        self.setPrice(totalprice)
+        return totalprice

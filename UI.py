@@ -30,8 +30,12 @@ class UI:
             print(f"the time is successfully added")
             # TODO: back to the menu
 
-
+    def getPrice(self):
+        totalprice = self.__handler.getPrice()
+        print(f"the total price is : {totalprice}")
+        # TODO: Show menu based on the price {cancel or stuff or back}
 
 if __name__ == "__main__":
     ui = UI()
-    ui.chooseTime()
+    # ui.chooseTime()
+    ui.getPrice()
