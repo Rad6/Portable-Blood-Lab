@@ -13,7 +13,7 @@ class BloodExpert(Person):
         self.__daily_schedule = daily_schedule
         super().__init__()
 
-    def getAvailableTimes(self):
+    def getAvailableTimes(self, with_faultcode=False):
         dss = self.getAllDailySchedule()
         available_times = []
         now = Date()
@@ -23,13 +23,16 @@ class BloodExpert(Person):
             for srvtime in srvtimes:
                 avl = srvtime.getAccessibility()
                 _type = srvtime.getType()
-                if avl and (_type != DateType.special) and (now < srvtime.getDate()):
+                if avl and ((_type != DateType.special) or with_faultcode) and \
+                    (now < srvtime.getDate()):
                     available_times.append(srvtime)
         return available_times
 
     def getDailySchedule(self, date):
         for each in self.__daily_schedule:
-            if (each.getDate().getYear() == date.getYear()) and (each.getDate().getMonth() == date.getMonth()) and (each.getDate().getDay() == date.getDay()):
+            if (each.getDate().getYear() == date.getYear()) and \
+                (each.getDate().getMonth() == date.getMonth()) and \
+                    (each.getDate().getDay() == date.getDay()):
                 return each
         return -1        
 

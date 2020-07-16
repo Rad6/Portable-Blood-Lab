@@ -16,11 +16,11 @@ class Lab:
         self.__blood_exeprts = blood_experts
         self.__tests = tests
 
-    def getAvailableTimes(self):
+    def getAvailableTimes(self, with_faultcode=False):
         bldexperts = self.getBloodExperts()
         totaltimes = []
         for item in bldexperts:
-            srvtime = item.getAvailableTimes()
+            srvtime = item.getAvailableTimes(with_faultcode)
             for item in srvtime:
                 totaltimes.append(item)
         return totaltimes

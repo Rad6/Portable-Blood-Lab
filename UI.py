@@ -7,7 +7,7 @@ class UI:
         self.__handler = Handler()
 
     def chooseTime(self):
-        total_times = self.__handler.getTimes()
+        total_times = self.__handler.getTimes(with_faultcode=True)
         
         print("\t0 : back")
         for i, item in enumerate(total_times):
@@ -91,11 +91,11 @@ class UI:
     
 if __name__ == "__main__":
     ui = UI()
-    ui.enterPrescriptionID()
-    ui.chooseTest()
+    # ui.enterPrescriptionID()
+    # ui.chooseTest()
     ui.chooseTime()
-    ui.chooseLab()
-    ui.enterAddress()
-    ui.assignExpert()
+    # ui.chooseLab()
+    # ui.enterAddress()
+    # ui.assignExpert()
     # ui.getPrice()
     # ui.payOnline()

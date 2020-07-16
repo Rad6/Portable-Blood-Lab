@@ -29,10 +29,10 @@ class Handler:
     def chooseTests(self, tests):
         self.__order.chooseTests(tests) 
 
-    def getTimes(self):
+    def getTimes(self, with_faultcode=False):
         self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
         lab = self.__order.getLab()
-        totaltimes = lab.getAvailableTimes()
+        totaltimes = lab.getAvailableTimes(with_faultcode)
         filtered_times = []
         for i in totaltimes:
             find = False
