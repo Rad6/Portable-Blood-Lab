@@ -44,6 +44,9 @@ class Order:
     def getServiceTime(self):
         return self.__service_time
 
+    def setAddress(self, address):
+        self.__address = address
+    
     def chooseTests(self, tests):
         test_list = TestList()
         test_list.setTests(tests)

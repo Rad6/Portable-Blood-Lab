@@ -82,13 +82,20 @@ class UI:
         self.__handler.getOrder().getLab().assignExpert(self.__handler.getOrder())
         print("Expert with id:" +str( self.__handler.getOrder().getBloodExpert().getID() )+ " assigned.")
 
+    def enterAddress(self):
+        print("enter your addres: ", end="")
+        address = str(input())
+        self.__handler.enterAddress(address)
+        print("done!")
+
+    
 if __name__ == "__main__":
     ui = UI()
     ui.enterPrescriptionID()
     ui.chooseTest()
     ui.chooseTime()
     ui.chooseLab()
+    ui.enterAddress()
     ui.assignExpert()
     # ui.getPrice()
     # ui.payOnline()
-    # ui.getPrice()
