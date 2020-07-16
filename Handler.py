@@ -40,6 +40,11 @@ class Handler:
         self.__order.setServiceTime(service_time)
         print(f"the chosen time is: {str(self.__order.getServiceTime())}")
     
+    def getPrice(self):
+        self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        price = self.__order.doPricing()
+        return price
+
     def getLabs(self):
         pass
     

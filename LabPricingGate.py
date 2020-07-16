@@ -1,6 +1,8 @@
 
+from random import randint
+
 class LabPricingGate:
     
-    def getPrice(self, detail, api_key):
-        # TODO
-        pass
+    @staticmethod
+    def getPrice(detail, api_key, endpoint):
+        return randint(1e5, 1e6)

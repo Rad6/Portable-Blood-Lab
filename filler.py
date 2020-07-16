@@ -59,10 +59,26 @@ def generateSampleLab():
     lab.setTests(generateSampleTestsAllType())
     return lab
 
+def kgenerateTestList():
+    from TestList import TestList
+    testlist = TestList()
+    testlist.setTests(generateSampleTestsAllType())
+    return testlist
+
+def kgeneratePrescriptionDetail():
+    from PrescriptionDetail import PrescriptionDetail
+    pd = PrescriptionDetail()
+    pd.setIsAccepted(True)
+    pd.setIsCovered(True)
+    pd.setTests(kgenerateTestList())
+    return pd
+
 def generateSampleOrder():
     from Order import Order
     order = Order()
     order.setLab(generateSampleLab())
+    order.setTestList(kgenerateTestList())
+    order.setPrescDetail(kgeneratePrescriptionDetail())
     return order
 
 def generateSamplePrescDetail(presc_id, covered):

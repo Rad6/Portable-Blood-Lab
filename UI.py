@@ -30,6 +30,10 @@ class UI:
             print(f"the time is successfully added")
             # TODO: back to the menu
 
+    def getPrice(self):
+        totalprice = self.__handler.getPrice()
+        print(f"the total price is : {totalprice}")
+        # TODO: Show menu based on the price {cancel or stuff or back}
     def enterPrescriptionID(self):
         print("Enter your Priscription ID: ", end="")
         pid = int(input())
@@ -60,5 +64,6 @@ class UI:
 if __name__ == "__main__":
     ui = UI()
     # ui.chooseTime()
-    ui.enterPrescriptionID()
-    ui.chooseTest()
+    # ui.enterPrescriptionID()
+    # ui.chooseTest()
+    # ui.getPrice()

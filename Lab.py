@@ -45,6 +45,14 @@ class Lab:
     def getBloodExperts(self):
         return self.__blood_exeprts
 
+    def getAPIKey(self):
+        return self.__api_key
+
+    def getEndPoint(self):
+        return self.__endpoint
+
     def calcPrice(self, detail):
-        # TODO
-        pass
+        apikey = self.getAPIKey()
+        endpoint = self.getEndPoint()
+        price = LabPricingGate.getPrice(detail, apikey, endpoint)
+        return price
