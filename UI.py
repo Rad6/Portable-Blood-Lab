@@ -30,8 +30,14 @@ class UI:
             print(f"the time is successfully added")
             # TODO: back to the menu
 
+    def enterPrescriptionID(self):
+        print("Enter your Priscription ID: ", end="")
+        pid = int(input())
+        self.__handler.enterPrescriptionID(pid)
+        print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
 
 
 if __name__ == "__main__":
     ui = UI()
-    ui.chooseTime()
+    # ui.chooseTime()
+    ui.enterPrescriptionID()

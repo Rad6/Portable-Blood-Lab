@@ -1,14 +1,25 @@
 # from Lab import Lab
 # from ServiceTime import ServiceTime
 from filler import generateSampleOrder
+from filler import generateSampleUserWithPrescs
 
 class Handler:
     def __init__(self):
         self.__order = None
 
     def enterPrescriptionID(self, pid):
-        pass
-    
+        user = generateSampleUserWithPrescs() # TODO: JUST A SAMPLE USER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        user_prescs = user.getPrescriptions()
+        
+        presc = None
+        for each_presc in user_prescs:
+            if each_presc.getPrescriptionDetail().getPrescID() == pid:
+                presc = each_presc
+                break
+        
+        order = user.createOrder(presc.getPrescriptionDetail())
+        self.setOrder(order)
+
     def createTests(self):
         pass
 

@@ -1,5 +1,6 @@
 from Prescription import Prescription
 from Person import Person
+from Order import Order
 
 class User(Person):
     def __init__(self, username, is_logged_in=False, \
@@ -21,8 +22,9 @@ class User(Person):
         return self.__prescs
 
     def createOrder(self, pd):
-        # TODO
-        pass
+        order = Order()
+        order.setPrescDetail(pd)
+        return order
     
     def getUsername(self):
         return self.__username
