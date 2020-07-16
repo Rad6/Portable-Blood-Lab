@@ -71,4 +71,5 @@ class Order:
     def setBloodExpert(self, value):
         self.__blood_expert = value
 
-    
+    def doPricing(self):
+        pass
