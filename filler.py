@@ -64,3 +64,27 @@ def generateSampleOrder():
     order = Order()
     order.setLab(generateSampleLab())
     return order
+
+def generateSamplePrescDetail(presc_id, covered):
+    from PrescriptionDetail import PrescriptionDetail
+    _tests = generateSampleTestsAllType()
+    presc_detail = PrescriptionDetail(prescID=presc_id, isCovered=covered, isAccepted=True, tests= _tests)
+    return presc_detail
+
+def generateSampleCheckedPresc(presc_id, covered):
+    from Prescription import Prescription
+    presc = Prescription()
+    presc_detail = generateSamplePrescDetail(presc_id, covered)
+    presc.setPrescriptionDetail(presc_detail)
+    return presc
+
+def generateSampleUserWithPrescs():
+    from User import User
+    prescriptions = []
+    n_prescs = 10
+    for i in range(n_prescs):
+        presc = generateSampleCheckedPresc(i, True)
+        prescriptions.append(presc)
+    user = User(username='sampleUserName', is_logged_in=True)
+    user.setPrescriptions(prescriptions)
+    return user
