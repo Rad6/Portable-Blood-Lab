@@ -24,10 +24,10 @@ class Handler:
         pass
 
     def getTests(self):
-        pass
+        return self.__order.getPrescDetail().getTests()
 
     def chooseTests(self, tests):
-        pass
+        self.__order.chooseTests(tests) 
 
     def getTimes(self):
         self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``

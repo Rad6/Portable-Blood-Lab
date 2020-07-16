@@ -1,3 +1,4 @@
+from TestList import TestList
 
 class Order:
     def __init__(self):
@@ -36,9 +37,10 @@ class Order:
     def getServiceTime(self):
         return self.__service_time
 
-    def chooseTests(self, tests = []):
-        # TODO
-        pass
+    def chooseTests(self, tests):
+        test_list = TestList()
+        test_list.setTests(tests)
+        self.__test_list = test_list
 
     def createTestList(self):
         # TODO
