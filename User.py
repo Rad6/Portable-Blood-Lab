@@ -10,6 +10,7 @@ class User(Person):
         self.__password_hash = password_hash
         self.__is_blocked = is_blocked
         self.__prescs = prescs
+        self.__orders = []
         super().__init__()
 
     def addPrescription(self, presc):
@@ -31,6 +32,15 @@ class User(Person):
     
     def setUsername(self, username):
         self.__username = username
+    
+    def setOrders(self, orders):
+        self.__orders = orders
+    
+    def getOrders(self):
+        return self.__orders
+    
+    def addOrder(self, order):
+        self.__orders.append(order)
     
     def __str__(self):
         return f"User: {super().__str__()} username: {self.__username}"

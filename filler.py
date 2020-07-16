@@ -105,6 +105,31 @@ def generateSampleUserWithPrescs():
     user.setPrescriptions(prescriptions)
     return user
 
+def genereateSampleUserwithFaultOrders():
+    from User import User
+    from Order import Order
+
+    user = User("sampleUserName", is_logged_in=True)
+
+    wfault = []
+    for i in range(4):
+        order = Order()
+        order.setFaultCode(f"12{i}")
+        wfault.append(order)
+    
+    orsers = [
+        Order(),
+        wfault[1],
+        Order(),
+        wfault[3],
+        wfault[2],
+        Order(),
+        Order(),
+    ]
+
+    user.setOrders(orsers)
+    return user
+
 def hGenerateSampleLabsWithTests():
     from Lab import Lab
     from Test import Test

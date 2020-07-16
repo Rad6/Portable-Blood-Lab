@@ -5,7 +5,9 @@ from filler import hGenerateSampleLabsWithTests
 
 class OrderStatus(Enum):
     success_payment = 0
-    faild_payment = 0
+    faild_payment = 1
+    start_faultorder = 2
+
 
 class Order:
     def __init__(self):
@@ -40,6 +42,12 @@ class Order:
 
     def setServiceTime(self, value):
         self.__service_time = value
+    
+    def setFaultCode(self, faultcode):
+        self.__fault_code = faultcode
+    
+    def getFaultCode(self):
+        return self.__fault_code
 
     def getServiceTime(self):
         return self.__service_time

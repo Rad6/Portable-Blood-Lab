@@ -1,7 +1,8 @@
 # from Lab import Lab
 # from ServiceTime import ServiceTime
 from filler import generateSampleOrder
-from filler import generateSampleUserWithPrescs
+from filler import generateSampleUserWithPrescs, genereateSampleUserwithFaultOrders
+from Order import OrderStatus
 
 class Handler:
     def __init__(self):
@@ -65,7 +66,14 @@ class Handler:
         self.__order.setAddress(address)
 
     def enterFaultCode(self, fault_code):
-        pass
+        user = genereateSampleUserwithFaultOrders() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        for order in user.getOrders():
+            if order.getFaultCode() == fault_code:
+                order.setStatus(OrderStatus.start_faultorder)
+                self.__order = order
+                return True
+        return False
+        
 
     def startNewOrder(self):
         pass

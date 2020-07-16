@@ -87,15 +87,26 @@ class UI:
         address = str(input())
         self.__handler.enterAddress(address)
         print("done!")
-
     
+    def enterFaultCode(self):
+        print("enter your faultcode: ", end="")
+        faultcode = str(input())
+        
+        status = self.__handler.enterFaultCode(faultcode)
+        if status:
+            print("done!")
+        else:
+            print("there is no such faultcode")
+    
+
 if __name__ == "__main__":
     ui = UI()
     # ui.enterPrescriptionID()
     # ui.chooseTest()
-    ui.chooseTime()
+    # ui.chooseTime()
     # ui.chooseLab()
     # ui.enterAddress()
     # ui.assignExpert()
     # ui.getPrice()
-    # ui.payOnline()
+    # ui.payOnline()t
+    ui.enterFaultCode()
