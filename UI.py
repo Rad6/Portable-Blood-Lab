@@ -41,8 +41,13 @@ class UI:
         print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
 
 
+    def payOnline(self):
+        res = self.__handler.payOnline()
+        print(f"Payment Status is : {res['status']}, TrackingCode: {res['trackingcode']}")
+
 if __name__ == "__main__":
     ui = UI()
     # ui.chooseTime()
-    ui.getPrice()
-    ui.enterPrescriptionID()
+    # ui.getPrice()
+    # ui.enterPrescriptionID()
+    ui.payOnline()

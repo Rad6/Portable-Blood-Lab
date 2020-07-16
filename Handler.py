@@ -61,7 +61,9 @@ class Handler:
         pass
 
     def payOnline(self):
-        pass
+        self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        status = self.__order.doPayment()
+        return status
 
     def getOrder(self):
         return self.__order
