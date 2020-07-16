@@ -4,12 +4,14 @@ from Location import Location
 from ServiceTime import DateType
 from datetime import datetime
 from Date import Date
+from Person import Person
 
-class BloodExpert:
-    def __init__(self, id, location, daily_schedule = []):
+class BloodExpert(Person):
+    def __init__(self, id, location=(0, 0), daily_schedule = []):
         self.__id = id
         self.__location = location
         self.__daily_schedule = daily_schedule
+        super().__init__()
 
     def getAvailableTimes(self):
         dss = self.getAllDailySchedule()
