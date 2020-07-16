@@ -7,7 +7,7 @@ class UI:
         self.__handler = Handler()
 
     def chooseTime(self):
-        total_times = self.__handler.getTimes(with_faultcode=True)
+        total_times = self.__handler.getTimes(with_faultcode=False)
         
         print("\t0 : back")
         for i, item in enumerate(total_times):
