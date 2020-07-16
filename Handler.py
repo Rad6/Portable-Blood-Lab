@@ -2,6 +2,8 @@
 # from ServiceTime import ServiceTime
 from filler import generateSampleOrder
 from filler import generateSampleUserWithPrescs
+from filler import hGenerateSampleUserWithoutPrescs
+from filler import hGenerateAllOTCTests
 
 class Handler:
     def __init__(self):
@@ -24,7 +26,10 @@ class Handler:
         pass
 
     def getTests(self):
-        return self.__order.getPrescDetail().getTests()
+        if self.__order.getPrescDetail() == None:
+            return hGenerateAllOTCTests()
+        else:
+            return self.__order.getPrescDetail().getTests()
 
     def chooseTests(self, tests):
         self.__order.chooseTests(tests) 
@@ -68,7 +73,9 @@ class Handler:
         pass
 
     def startNewOrder(self):
-        pass
+        user = hGenerateSampleUserWithoutPrescs()
+        order = user.createOrder(None)
+        self.setOrder(order)
 
     def payOnline(self):
         self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
