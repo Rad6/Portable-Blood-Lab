@@ -40,6 +40,26 @@ class UI:
         self.__handler.enterPrescriptionID(pid)
         print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
 
+    def chooseTest(self):
+        print("Your Priscription includes following tests:")
+
+        tests = self.__handler.getTests()
+        for i in range(len(tests)):
+            print(str(i) + ". " + tests[i].getName())
+        
+        print("Enter the tests numbers from above to finilize your order(in one line, space separated) :")
+        final_tests_numbers = list(map(int, input().split()))
+
+        final_tests = []
+        for each in final_tests_numbers:
+            final_tests.append(tests[each])
+
+        self.__handler.chooseTests(final_tests)
+
+        print("You've chosen: ")
+        for each in self.__handler.getOrder().getTestList().getTests():
+            print(each.getName(), end=" ")
+
 
     def payOnline(self):
         res = self.__handler.payOnline()
@@ -51,3 +71,6 @@ if __name__ == "__main__":
     # ui.getPrice()
     # ui.enterPrescriptionID()
     ui.payOnline()
+    # ui.enterPrescriptionID()
+    # ui.chooseTest()
+    # ui.getPrice()

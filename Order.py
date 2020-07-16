@@ -1,5 +1,6 @@
 from PaymentDetail import PaymentDetail, PaymentStatus
 from enum import Enum
+from TestList import TestList
 
 class OrderStatus(Enum):
     success_payment = 0
@@ -42,9 +43,10 @@ class Order:
     def getServiceTime(self):
         return self.__service_time
 
-    def chooseTests(self, tests = []):
-        # TODO
-        pass
+    def chooseTests(self, tests):
+        test_list = TestList()
+        test_list.setTests(tests)
+        self.__test_list = test_list
 
     def createTestList(self):
         # TODO
