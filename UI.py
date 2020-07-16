@@ -78,12 +78,19 @@ class UI:
         res = self.__handler.payOnline()
         print(f"Payment Status is : {res['status']}, TrackingCode: {res['trackingcode']}")
 
+    def enterAddress(self):
+        print("enter your addres: ", end="")
+        address = str(input())
+        self.__handler.enterAddress(address)
+        print("done!")
+    
 if __name__ == "__main__":
     ui = UI()
     # ui.chooseTime()
-    ui.enterPrescriptionID()
-    ui.chooseTest()
-    ui.chooseLab()
+    # ui.enterPrescriptionID()
+    # ui.chooseTest()
+    # ui.chooseLab()
     # ui.getPrice()
     # ui.payOnline()
     # ui.getPrice()
+    ui.enterAddress()

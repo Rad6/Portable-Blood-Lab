@@ -62,7 +62,7 @@ class Handler:
         self.__order.setLab(lab)
 
     def enterAddress(self, address):
-        pass
+        self.__order.setAddress(address)
 
     def enterFaultCode(self, fault_code):
         pass
