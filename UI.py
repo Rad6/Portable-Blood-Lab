@@ -74,10 +74,16 @@ class UI:
         print("You've chosen " + self.__handler.getOrder().getLab().getName() + " lab.")
 
 
+    def payOnline(self):
+        res = self.__handler.payOnline()
+        print(f"Payment Status is : {res['status']}, TrackingCode: {res['trackingcode']}")
+
 if __name__ == "__main__":
     ui = UI()
     # ui.chooseTime()
     ui.enterPrescriptionID()
     ui.chooseTest()
     ui.chooseLab()
+    # ui.getPrice()
+    # ui.payOnline()
     # ui.getPrice()

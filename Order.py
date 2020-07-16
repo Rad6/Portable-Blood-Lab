@@ -1,5 +1,11 @@
+from PaymentDetail import PaymentDetail, PaymentStatus
+from enum import Enum
 from TestList import TestList
 from filler import hGenerateSampleLabsWithTests
+
+class OrderStatus(Enum):
+    success_payment = 0
+    faild_payment = 0
 
 class Order:
     def __init__(self):
@@ -81,8 +87,15 @@ class Order:
         return price + 4000
 
     def doPayment(self):
-        # TODO
-        pass
+        price = self.getPrice()
+        pd = PaymentDetail()
+        pd.setAmount(self.__price)
+        res = pd.pay()
+        if res['status'] == PaymentStatus.ok:
+            self.setStatus(OrderStatus.success_payment)
+        else:
+            self.setStatus(OrderStatus.faild_payment)
+        return res
 
     def setBloodExpert(self, value):
         self.__blood_expert = value
