@@ -5,6 +5,7 @@ class UI:
 
     def __init__(self):
         self.__handler = Handler()
+        self.__has_presc = None
 
     def chooseTime(self):
         total_times = self.__handler.getTimes(with_faultcode=False)
@@ -34,6 +35,7 @@ class UI:
         totalprice = self.__handler.getPrice()
         print(f"the total price is : {totalprice}")
         # TODO: Show menu based on the price {cancel or stuff or back}
+
     def enterPrescriptionID(self):
         print("Enter your Priscription ID: ", end="")
         pid = int(input())
@@ -41,7 +43,11 @@ class UI:
         print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
 
     def chooseTest(self):
-        print("Your Priscription includes following tests:")
+        if self.__has_presc:
+            print("Your Priscription includes following tests:")
+        else:
+            print("Available OTC tests are:")
+
 
         tests = self.__handler.getTests()
         for i in range(len(tests)):
@@ -87,6 +93,20 @@ class UI:
         address = str(input())
         self.__handler.enterAddress(address)
         print("done!")
+
+    def createOrder(self):
+        print("Do you have a PrescriptionId? (y/n)")
+        ans = input()
+        if ans == 'y':
+            self.__has_presc = True
+            self.enterPrescriptionID()
+        else:
+            self.__has_presc = False
+            self.startNewOrder()
+
+    def startNewOrder(self):
+        self.__handler.startNewOrder()
+        print("New order created!\n")
     
     def enterFaultCode(self):
         print("enter your faultcode: ", end="")
@@ -102,6 +122,12 @@ class UI:
 if __name__ == "__main__":
     ui = UI()
     # ui.enterPrescriptionID()
+    # ui.chooseTest()
+    # ui.chooseTime()
+    # ui.chooseLab()
+    # ui.enterAddress()
+    # ui.assignExpert()
+    # ui.createOrder()
     # ui.chooseTest()
     # ui.chooseTime()
     # ui.chooseLab()

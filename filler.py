@@ -130,6 +130,11 @@ def genereateSampleUserwithFaultOrders():
     user.setOrders(orsers)
     return user
 
+def hGenerateSampleUserWithoutPrescs():
+    from User import User
+    user = User(username='sampleUserName', is_logged_in=True)
+    return user
+
 def hGenerateSampleLabsWithTests():
     from Lab import Lab
     from Test import Test
@@ -190,3 +195,14 @@ def hGenerateSampleLabsWithTests():
     labs.append(lab4)
 
     return labs
+
+def hGenerateAllOTCTests():
+    from Test import Test
+    tests = [
+        Test('Vitamin D', mustinclucepresc=False),
+        Test('Sodium', mustinclucepresc=False),
+        Test('Calcium', mustinclucepresc=False),
+        Test('Corona', mustinclucepresc=False),
+        Test('FBG', mustinclucepresc=False)
+    ]
+    return tests
