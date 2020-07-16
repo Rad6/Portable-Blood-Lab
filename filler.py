@@ -104,3 +104,64 @@ def generateSampleUserWithPrescs():
     user = User(username='sampleUserName', is_logged_in=True)
     user.setPrescriptions(prescriptions)
     return user
+
+def hGenerateSampleLabsWithTests():
+    from Lab import Lab
+    from Test import Test
+    labs = []
+
+    lab1 = Lab('sampleLab1')
+    lab1.setBloodExperts(generateSampleBloodExperts())
+    tests = [
+        Test('Thyroid', mustinclucepresc=True),
+        Test('HIV', mustinclucepresc=True),
+        Test('Herpes', mustinclucepresc=True),
+        Test('Vitamin D', mustinclucepresc=False),
+        Test('Sodium', mustinclucepresc=False),
+        Test('Calcium', mustinclucepresc=False)
+    ]
+    lab1.setTests(tests)
+    labs.append(lab1)
+
+    lab2 = Lab('sampleLab2')
+    lab2.setBloodExperts(generateSampleBloodExperts())
+    tests = [
+        Test('HIV', mustinclucepresc=True),
+        Test('Herpes', mustinclucepresc=True),
+        Test('Vitamin D', mustinclucepresc=False),
+        Test('Sodium', mustinclucepresc=False),
+        Test('Calcium', mustinclucepresc=False),
+        Test('Corona', mustinclucepresc=False)
+    ]
+    lab2.setTests(tests)
+    labs.append(lab2)
+
+    lab3 = Lab('sampleLab3')
+    lab3.setBloodExperts(generateSampleBloodExperts())
+    tests = [
+        Test('Herpes', mustinclucepresc=True),
+        Test('Vitamin D', mustinclucepresc=False),
+        Test('Sodium', mustinclucepresc=False),
+        Test('Calcium', mustinclucepresc=False),
+        Test('Corona', mustinclucepresc=False),
+        Test('FBG', mustinclucepresc=False)
+    ]
+    lab3.setTests(tests)
+    labs.append(lab3)
+
+    lab4 = Lab('sampleLab4')
+    lab4.setBloodExperts(generateSampleBloodExperts())
+    tests = [
+        Test('Thyroid', mustinclucepresc=True),
+        Test('HIV', mustinclucepresc=True),
+        Test('Herpes', mustinclucepresc=True),
+        Test('Vitamin D', mustinclucepresc=False),
+        Test('Sodium', mustinclucepresc=False),
+        Test('Calcium', mustinclucepresc=False),
+        Test('Corona', mustinclucepresc=False),
+        Test('FBG', mustinclucepresc=False)
+    ]
+    lab4.setTests(tests)
+    labs.append(lab4)
+
+    return labs

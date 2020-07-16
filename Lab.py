@@ -56,3 +56,6 @@ class Lab:
         endpoint = self.getEndPoint()
         price = LabPricingGate.getPrice(detail, apikey, endpoint)
         return price
+
+    def getName(self):
+        return self.__name

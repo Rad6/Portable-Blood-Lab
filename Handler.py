@@ -46,10 +46,10 @@ class Handler:
         return price
 
     def getLabs(self):
-        pass
+        return self.__order.getFinalLabs()
     
     def chooseLab(self, lab):
-        pass
+        self.__order.setLab(lab)
 
     def enterAddress(self, address):
         pass

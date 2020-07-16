@@ -1,4 +1,5 @@
 from TestList import TestList
+from filler import hGenerateSampleLabsWithTests
 
 class Order:
     def __init__(self):
@@ -47,8 +48,19 @@ class Order:
         pass
 
     def getFinalLabs(self):
-        # TODO
-        pass
+        tests = self.__test_list.getTests()
+        all_labs = hGenerateSampleLabsWithTests()
+        final_labs = []
+        for lab in all_labs:
+            supported_tests = lab.getTests()
+            supports = True
+            for each in tests:
+                if not (each in supported_tests):
+                    supports = False
+                    break
+            if supports:
+                final_labs.append(lab)
+        return final_labs
 
     def setStatus(self, value):
         self.__status = value

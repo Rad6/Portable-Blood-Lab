@@ -59,11 +59,25 @@ class UI:
         print("You've chosen: ")
         for each in self.__handler.getOrder().getTestList().getTests():
             print(each.getName(), end=" ")
+        print("\n")
+
+    def chooseLab(self):
+        final_labs = self.__handler.getLabs()
+        print("Labs that support your tests are:")
+        for i in range(len(final_labs)):
+            print(str(i) + ". " + final_labs[i].getName())
+
+        print("Choose your lab: (enter number)")
+        chosen_lab_num = int(input())
+
+        self.__handler.chooseLab(final_labs[chosen_lab_num])
+        print("You've chosen " + self.__handler.getOrder().getLab().getName() + " lab.")
 
 
 if __name__ == "__main__":
     ui = UI()
     # ui.chooseTime()
-    # ui.enterPrescriptionID()
-    # ui.chooseTest()
+    ui.enterPrescriptionID()
+    ui.chooseTest()
+    ui.chooseLab()
     # ui.getPrice()

@@ -19,3 +19,9 @@ class Test:
 
     def __str__(self):
         return f"Test: name : {self.__name}, mustPresc : {self.__mustIncluidePresc}"
+
+    def __eq__(self, other):
+        if(self.__name == other.getName()):
+            return True
+        else:
+            return False
