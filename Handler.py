@@ -4,7 +4,7 @@ from filler import generateSampleOrder
 
 class Handler:
     def __init__(self):
-        self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        self.__order = None
 
     def enterPrescriptionID(self, pid):
         pass
@@ -19,6 +19,7 @@ class Handler:
         pass
 
     def getTimes(self):
+        self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
         lab = self.__order.getLab()
         totaltimes = lab.getAvailableTimes()
         return totaltimes
