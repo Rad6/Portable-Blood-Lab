@@ -33,7 +33,17 @@ class Handler:
         self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
         lab = self.__order.getLab()
         totaltimes = lab.getAvailableTimes()
-        return totaltimes
+        filtered_times = []
+        for i in totaltimes:
+            find = False
+            for j in filtered_times:
+                if i.getDate() == j.getDate():
+                    find = True
+                    break
+            if not find:
+                filtered_times.append(i)
+        filtered_times.sort(key=lambda x: x.getDate())
+        return filtered_times
 
     def chooseTime(self, service_time):
         service_time.setAccessibility(False)
