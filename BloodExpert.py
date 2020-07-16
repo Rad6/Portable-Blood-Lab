@@ -28,8 +28,13 @@ class BloodExpert(Person):
         return available_times
 
     def getDailySchedule(self, date):
-        # TODO
-        pass
+        for each in self.__daily_schedule:
+            if (each.getDate().getYear() == date.getYear()) and (each.getDate().getMonth() == date.getMonth()) and (each.getDate().getDay() == date.getDay()):
+                return each
+        return -1        
 
     def getAllDailySchedule(self):
         return self.__daily_schedule
+
+    def getID(self):
+        return self.__id

@@ -36,7 +36,7 @@ class Handler:
         return totaltimes
 
     def chooseTime(self, service_time):
-        service_time.setAccessibility(False)
+        # service_time.setAccessibility(False)
         self.__order.setServiceTime(service_time)
         print(f"the chosen time is: {str(self.__order.getServiceTime())}")
     

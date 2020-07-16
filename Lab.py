@@ -27,6 +27,7 @@ class Lab:
 
     def getSupportedTests(self):
         # TODO: Kiarash: Farghesh ba getTests chie?
+        #       Hadi: Hechi :D
         pass
     
     def getTests(self):
@@ -36,8 +37,20 @@ class Lab:
         self.__tests = tests
     
     def assignExpert(self, order):
-        # TODO
-        pass
+        blood_experts = self.getBloodExperts()
+        order_date = order.getServiceTime().getDate()
+        for each in blood_experts:
+            daily_schedule = each.getDailySchedule(order_date)
+            if daily_schedule == -1:
+                continue
+            service_time = daily_schedule.getServiceTime(order_date)
+            if service_time == -1:
+                continue
+            availability = service_time.getAccessibility()
+            if availability:
+                each.getDailySchedule(order_date).getServiceTime(order_date).setAccessibility(False)
+                order.setBloodExpert(each)
+                break
 
     def setBloodExperts(self, blood_experts):
         self.__blood_exeprts = blood_experts

@@ -78,12 +78,17 @@ class UI:
         res = self.__handler.payOnline()
         print(f"Payment Status is : {res['status']}, TrackingCode: {res['trackingcode']}")
 
+    def assignExpert(self):
+        self.__handler.getOrder().getLab().assignExpert(self.__handler.getOrder())
+        print("Expert with id:" +str( self.__handler.getOrder().getBloodExpert().getID() )+ " assigned.")
+
 if __name__ == "__main__":
     ui = UI()
-    # ui.chooseTime()
     ui.enterPrescriptionID()
     ui.chooseTest()
+    ui.chooseTime()
     ui.chooseLab()
+    ui.assignExpert()
     # ui.getPrice()
     # ui.payOnline()
     # ui.getPrice()

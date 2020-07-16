@@ -11,5 +11,14 @@ class DailySchedule:
         return self.__service_times
 
     def getServiceTime(self, date):
-        # TODO
-        pass
+        for each in self.__service_times:
+            if each.getDate() == date:
+                return each
+        return -1
+        
+
+    def getDate(self):
+        return self.__date
+
+    def setDate(self, value):
+        self.__date = value

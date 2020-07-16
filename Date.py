@@ -41,10 +41,17 @@ class Date:
         if self.getDay() > other.getDay() and\
              self.getYear() == other.getYear() and self.getMonth() == other.getMonth():
             return True
-        # if self.getHour() > other.getHour():
-        #     return True
+        if self.getHour() > other.getHour() and\
+            self.getYear() == other.getYear() and self.getMonth() == other.getMonth() and\
+                self.getDay() == other.getDay():
+            return True
         return False
 
-
+    def __eq__(self, other):
+        if self.getYear() == other.getYear() and self.getMonth() == other.getMonth() and\
+                self.getDay() == other.getDay() and self.getHour() == other.getHour():
+            return True
+        return False
+    
     def __str__(self):
         return f"Date({self.__year}.{self.__month}.{self.__day} at {self.__hour})"

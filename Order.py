@@ -89,7 +89,7 @@ class Order:
     def doPayment(self):
         price = self.getPrice()
         pd = PaymentDetail()
-        pd.setAmount(self.__price)
+        pd.setAmount(price)
         res = pd.pay()
         if res['status'] == PaymentStatus.ok:
             self.setStatus(OrderStatus.success_payment)
@@ -100,6 +100,9 @@ class Order:
     def setBloodExpert(self, value):
         self.__blood_expert = value
 
+    def getBloodExpert(self):
+        return self.__blood_expert
+        
     def doPricing(self):
         tl = self.getTestList()
         tests = tl.getTests()
