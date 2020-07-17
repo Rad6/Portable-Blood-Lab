@@ -48,7 +48,7 @@ class UI:
         # TODO: Show menu based on the price {cancel or stuff or back}
 
     def enterPrescriptionID(self):
-        print("Enter your Priscription ID: (between 1 and 10, fake!) ", end="")
+        print("Enter your Priscription ID: (between 0 and 9, fake!) ", end="")
         pid = int(input())
         self.__handler.enterPrescriptionID(pid)
         print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
@@ -157,7 +157,6 @@ class UI:
 if __name__ == "__main__":
     ui = UI()
     ui.ask_order_type()
-    print(ui.getOrderType())
     if ui.getOrderType() == OrderType.with_presc:
         ui.enterPrescriptionID()
     elif ui.getOrderType() == OrderType.without_presc:
