@@ -37,7 +37,9 @@ class Handler:
         self.__order.chooseTests(tests) 
 
     def getTimes(self, with_faultcode=False):
-        # self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        print(with_faultcode)
+        if with_faultcode:
+            self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
         lab = self.__order.getLab()
         totaltimes = lab.getAvailableTimes(with_faultcode)
         filtered_times = []

@@ -1,14 +1,25 @@
 from Handler import Handler
+from enum import Enum
 
+
+class OrderType(Enum):
+    with_presc = 1
+    without_presc = 2
+    with_fault_code = 3
+    
 
 class UI:
 
     def __init__(self):
         self.__handler = Handler()
         self.__has_presc = None
+        self.__order_type = None
 
     def chooseTime(self):
-        total_times = self.__handler.getTimes(with_faultcode=False)
+        with_fault_code = False
+        if self.__order_type == OrderType.with_fault_code:
+            with_fault_code = True
+        total_times = self.__handler.getTimes(with_faultcode = with_fault_code)
         
         print("\t0 : back")
         for i, item in enumerate(total_times):
@@ -43,7 +54,7 @@ class UI:
         print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
 
     def chooseTest(self):
-        if self.__has_presc:
+        if self.__order_type == OrderType.with_presc:
             print("Your Priscription includes following tests:")
         else:
             print("Available OTC tests are:")
@@ -110,23 +121,58 @@ class UI:
     
     def enterFaultCode(self):
         print("enter your faultcode: ", end="")
-        faultcode = str(input())
-        
-        status = self.__handler.enterFaultCode(faultcode)
-        if status:
-            print("done!")
-        else:
-            print("there is no such faultcode")
+        while True:
+            faultcode = str(input())
+            
+            status = self.__handler.enterFaultCode(faultcode)
+            if status:
+                print("done!")
+                break
+            else:
+                print("there is no such faultcode, try again: ", end="")
+
+    def ask_order_type(self):
+        print("Please choose one of the following:\n" +
+        "1. New order with prescription\n" + 
+        "2. New order without prescription\n" +
+        "3. Enter fault code"
+        )
+        while True:
+            order_type = int(input())
+            if order_type == 1:
+                self.__order_type = OrderType.with_presc
+            elif order_type == 2:
+                self.__order_type = OrderType.without_presc
+            elif order_type == 3:
+                self.__order_type = OrderType.with_fault_code
+            else:
+                print("Invalid. Try again: ", end="")
+                continue
+            break
+
+    def getOrderType(self):
+        return self.__order_type
     
 
 if __name__ == "__main__":
     ui = UI()
-    ui.createOrder()
-    ui.chooseTest()
-    ui.chooseLab()
+    ui.ask_order_type()
+    print(ui.getOrderType())
+    if ui.getOrderType() == OrderType.with_presc:
+        ui.enterPrescriptionID()
+    elif ui.getOrderType() == OrderType.without_presc:
+        ui.startNewOrder()
+    else:
+        ui.enterFaultCode()
+
+    if ui.getOrderType() != OrderType.with_fault_code:
+        ui.chooseTest()
+        ui.chooseLab()
+
     ui.chooseTime()
-    ui.enterAddress()
-    ui.assignExpert()
-    ui.getPrice()
-    ui.payOnline()
-    # ui.enterFaultCode()
+
+    if ui.getOrderType() != OrderType.with_fault_code:
+        ui.enterAddress()
+        ui.assignExpert()
+        ui.getPrice()
+        ui.payOnline()
