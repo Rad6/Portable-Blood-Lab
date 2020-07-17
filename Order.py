@@ -118,8 +118,12 @@ class Order:
         tl = self.getTestList()
         tests = tl.getTests()
         pd = self.getPrescDetail()
-        if pd.getIsCovered():
+        if not pd:
+            pid = -1
+        elif pd.getIsCovered():
             pid = pd.getPrescID()
+        else:
+            pid = -1
         lab = self.getLab()
         detail = {
             'pid' : pid,
