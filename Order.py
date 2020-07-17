@@ -131,5 +131,7 @@ class Order:
         }
         price = lab.calcPrice(detail)
         totalprice = self.calcTotalPrice(price)
+        if self.getLab().getName() == "sampleLab1": # Our lab !
+            totalprice -= totalprice/20 # 5% discount on choosing our lab !
         self.setPrice(totalprice)
         return totalprice

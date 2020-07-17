@@ -21,8 +21,11 @@ class Handler:
                 presc = each_presc
                 break
         
-        order = user.createOrder(presc.getPrescriptionDetail())
-        self.setOrder(order)
+        if presc == None:
+            raise Exception
+        else:
+            order = user.createOrder(presc.getPrescriptionDetail())
+            self.setOrder(order)
 
     def createTests(self):
         pass

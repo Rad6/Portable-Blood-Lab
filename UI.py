@@ -25,14 +25,17 @@ class UI:
         for i, item in enumerate(total_times):
             print(f"\t{i+1} : {item}")
         
-
+        print("Choose a time from times above: ", end="")
         while True:
-            print("Choose a time from times above: ", end="")
-            chosen_time = int(input())
+            try:
+                chosen_time = int(input())
+            except ValueError:
+                print("Invalid, Try Again; ", end="")
+                continue                
             if chosen_time >= 0 and chosen_time <= len(total_times):
                 break
             else:
-                print("Try Again, ", end="")
+                print("Invalid, Try Again, ", end="")
         
         if chosen_time == 0:
             # TODO: BACK TO PREV SEC
@@ -49,9 +52,16 @@ class UI:
 
     def enterPrescriptionID(self):
         print("Enter your Priscription ID: (between 0 and 9, fake!) ", end="")
-        pid = int(input())
-        self.__handler.enterPrescriptionID(pid)
-        print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
+        while True:
+            pid = int(input())
+            try:
+                self.__handler.enterPrescriptionID(pid)
+            except:
+                print("not found, try again: ", end="")
+                continue
+            # self.__handler.enterPrescriptionID(pid)
+            print("Order with pid=" + str( (self.__handler).getOrder().getPrescDetail().getPrescID() ) + " created\n")
+            break
 
     def chooseTest(self):
         if self.__order_type == OrderType.with_presc:
@@ -65,7 +75,21 @@ class UI:
             print(str(i) + ". " + tests[i].getName())
         
         print("Enter the tests numbers from above to finilize your order(in one line, space separated) :")
-        final_tests_numbers = list(map(int, input().split()))
+        while True:
+            valid = True
+            try:
+                final_tests_numbers = list(map(int, input().split()))
+                for each in final_tests_numbers:
+                    if each >= len(tests):
+                        valid = False
+                        print("Invalid, please try again: ", end="")
+                        break
+            except:
+                valid = False
+                print("Invalid, please try again: ", end="")
+                continue
+            if valid:
+                break
 
         final_tests = []
         for each in final_tests_numbers:
@@ -84,8 +108,26 @@ class UI:
         for i in range(len(final_labs)):
             print(str(i) + ". " + final_labs[i].getName())
 
-        print("Choose your lab: (enter number)")
-        chosen_lab_num = int(input())
+        if final_labs[0].getName() == "sampleLab1":
+            print("Choose your lab: (enter number. Orders on our lab (sampleLab1), will get a 5% discount)")
+        else:
+            print("Choose your lab: (enter number)")
+
+
+        while True:
+            valid = True
+            try:
+                chosen_lab_num = int(input())
+                if chosen_lab_num >= len(final_labs):
+                    valid = False
+                    print("Invalid, please try again: ", end="")
+                    continue
+            except ValueError:
+                valid = False
+                print("Invalid, please try again: ", end="")
+                continue
+            if valid:
+                break
 
         self.__handler.chooseLab(final_labs[chosen_lab_num])
         print("You've chosen " + self.__handler.getOrder().getLab().getName() + " lab.")
@@ -138,7 +180,11 @@ class UI:
         "3. Enter fault code"
         )
         while True:
-            order_type = int(input())
+            try:
+                order_type = int(input())
+            except ValueError:
+                print("Invalid. Try again: ", end="")
+                continue
             if order_type == 1:
                 self.__order_type = OrderType.with_presc
             elif order_type == 2:

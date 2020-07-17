@@ -9,7 +9,9 @@ def generateSampleTestsAllType():
         Test('Herpes', mustinclucepresc=True),
         Test('Vitamin D', mustinclucepresc=False),
         Test('Sodium', mustinclucepresc=False),
-        Test('Calcium', mustinclucepresc=False)
+        Test('Calcium', mustinclucepresc=False),
+        Test('Corona', mustinclucepresc=False),
+        Test('FBG', mustinclucepresc=False)
     ]
     return tests
 
@@ -140,7 +142,7 @@ def hGenerateSampleLabsWithTests():
     from Test import Test
     labs = []
 
-    lab1 = Lab('sampleLab1')
+    lab1 = Lab('sampleLab1') # Our lab !
     lab1.setBloodExperts(generateSampleBloodExperts())
     tests = [
         Test('Thyroid', mustinclucepresc=True),
