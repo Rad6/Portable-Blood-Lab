@@ -12,7 +12,7 @@ class Handler:
         self.__order = None
 
     def enterPrescriptionID(self, pid):
-        user = generateSampleUserWithPrescs() # TODO: JUST A SAMPLE USER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        user = generateSampleUserWithPrescs() # TODO: JUST A SAMPLE USER ~~~~~~~~~~ WHILE WE HAVE NO DAO ~~~~~~~~~~~~~~~~~~~~
         user_prescs = user.getPrescriptions()
         
         presc = None
@@ -37,7 +37,7 @@ class Handler:
         self.__order.chooseTests(tests) 
 
     def getTimes(self, with_faultcode=False):
-        self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        # self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
         lab = self.__order.getLab()
         totaltimes = lab.getAvailableTimes(with_faultcode)
         filtered_times = []
@@ -58,7 +58,7 @@ class Handler:
         print(f"the chosen time is: {str(self.__order.getServiceTime())}")
     
     def getPrice(self):
-        self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        # self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
         price = self.__order.doPricing()
         return price
 
@@ -72,7 +72,7 @@ class Handler:
         self.__order.setAddress(address)
 
     def enterFaultCode(self, fault_code):
-        user = genereateSampleUserwithFaultOrders() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        user = genereateSampleUserwithFaultOrders() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ WHILE WE HAVE NO DAO ~~~~~~~~~~~~~~~~~~~~``
         for order in user.getOrders():
             if order.getFaultCode() == fault_code:
                 order.setStatus(OrderStatus.start_faultorder)
@@ -87,7 +87,7 @@ class Handler:
         self.setOrder(order)
 
     def payOnline(self):
-        self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
+        # self.__order = generateSampleOrder() # TODO: JUST A SAMPLE ORDER ~~~~~~~~~~ DELETE IT IN FUTURE ~~~~~~~~~~~~~~~~~~~~``
         status = self.__order.doPayment()
         return status
 
